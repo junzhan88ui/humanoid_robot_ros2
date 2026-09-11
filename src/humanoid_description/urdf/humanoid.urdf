@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+
+<robot name="simple_humanoid">
+
+
+  <link name="base_link">
+
+    <visual>
+
+      <geometry>
+        <box size="0.4 0.25 0.6"/>
+      </geometry>
+
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+  <link name="left_leg">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.05" length="0.6"/>
+      </geometry>
+
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+  <link name="right_leg">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.05" length="0.6"/>
+      </geometry>
+
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+  <joint name="left_hip_joint"
+         type="revolute">
+
+    <parent link="base_link"/>
+
+    <child link="left_leg"/>
+
+    <origin xyz="0 0.15 -0.3"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+  <joint name="right_hip_joint"
+         type="revolute">
+
+    <parent link="base_link"/>
+
+    <child link="right_leg"/>
+
+    <origin xyz="0 -0.15 -0.3"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+</robot>
+
