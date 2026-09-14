@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"
-       name="humanoid_v1_7">
+       name="humanoid_v1_5">
 
 
   <!-- ================= -->
@@ -13,57 +13,42 @@
     filename="$(find humanoid_description)/urdf/modules/legs.xacro"/>
 
 
-  <xacro:include
-    filename="$(find humanoid_description)/urdf/modules/pelvis.xacro"/>
-
-
 
   <!-- ================= -->
-  <!-- Robot Root -->
+  <!-- Base -->
   <!-- ================= -->
 
 
   <link name="base_link">
+
+    <visual>
+
+      <geometry>
+
+        <box size="0.4 0.25 0.5"/>
+
+      </geometry>
+
+
+      <origin xyz="0 0 0.25"/>
+
+
+      <material name="blue">
+
+        <color rgba="0 0 1 1"/>
+
+      </material>
+
+
+    </visual>
+
 
   </link>
 
 
 
   <!-- ================= -->
-  <!-- Pelvis -->
-  <!-- ================= -->
-
-
-  <xacro:pelvis/>
-
-
-
-  <!-- ================= -->
-  <!-- Base To Pelvis -->
-  <!-- ================= -->
-
-
-  <joint name="base_to_pelvis"
-         type="fixed">
-
-
-    <parent link="base_link"/>
-
-
-    <child link="pelvis_link"/>
-
-
-    <origin
-      xyz="0 0 0.85"/>
-
-
-  </joint>
-
-
-
-
-  <!-- ================= -->
-  <!-- Legs -->
+  <!-- Left Leg -->
   <!-- ================= -->
 
 
@@ -71,14 +56,19 @@
     prefix="left"/>
 
 
+
+  <!-- ================= -->
+  <!-- Right Leg -->
+  <!-- ================= -->
+
+
   <xacro:leg
     prefix="right"/>
 
 
 
-
   <!-- ================= -->
-  <!-- Left Hip -->
+  <!-- Hip Joints -->
   <!-- ================= -->
 
 
@@ -86,8 +76,7 @@
          type="revolute">
 
 
-    <parent link="pelvis_link"/>
-
+    <parent link="base_link"/>
 
     <child link="left_thigh"/>
 
@@ -96,14 +85,13 @@
       xyz="0 0.15 0"/>
 
 
-    <axis
-      xyz="1 0 0"/>
+    <axis xyz="1 0 0"/>
 
 
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="20"
+      effort="10"
       velocity="1"/>
 
 
@@ -111,18 +99,11 @@
 
 
 
-
-  <!-- ================= -->
-  <!-- Right Hip -->
-  <!-- ================= -->
-
-
   <joint name="right_hip_joint"
          type="revolute">
 
 
-    <parent link="pelvis_link"/>
-
+    <parent link="base_link"/>
 
     <child link="right_thigh"/>
 
@@ -131,14 +112,13 @@
       xyz="0 -0.15 0"/>
 
 
-    <axis
-      xyz="1 0 0"/>
+    <axis xyz="1 0 0"/>
 
 
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="20"
+      effort="10"
       velocity="1"/>
 
 
@@ -147,5 +127,4 @@
 
 
 </robot>
-
 

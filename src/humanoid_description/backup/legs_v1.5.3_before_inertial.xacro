@@ -3,7 +3,10 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
+  <!-- ===================== -->
   <!-- Materials -->
+  <!-- ===================== -->
+
 
   <material name="gray">
     <color rgba="0.5 0.5 0.5 1"/>
@@ -21,167 +24,64 @@
 
 
 
-  <!-- Leg Macro -->
+  <!-- ===================== -->
+  <!-- Leg Link Macro -->
+  <!-- ===================== -->
+
 
   <xacro:macro name="leg"
-               params="prefix">
+               params="prefix ">
 
 
-
-    <!-- ================= -->
     <!-- thigh -->
-    <!-- ================= -->
-
 
     <link name="${prefix}_thigh">
-
 
       <visual>
 
         <geometry>
-
           <cylinder
             radius="0.06"
             length="0.35"/>
-
         </geometry>
-
 
         <origin
           xyz="0 0 -0.175"/>
-
 
         <material name="gray"/>
 
-
       </visual>
-
-
-
-      <collision>
-
-        <geometry>
-
-          <cylinder
-            radius="0.06"
-            length="0.35"/>
-
-        </geometry>
-
-
-        <origin
-          xyz="0 0 -0.175"/>
-
-
-      </collision>
-
-
-
-      <inertial>
-
-        <mass value="1.0"/>
-
-        <origin
-          xyz="0 0 -0.175"/>
-
-        <inertia
-          ixx="0.01"
-          ixy="0"
-          ixz="0"
-          iyy="0.01"
-          iyz="0"
-          izz="0.002"/>
-
-      </inertial>
-
 
     </link>
 
 
 
-
-    <!-- ================= -->
     <!-- shin -->
-    <!-- ================= -->
-
 
     <link name="${prefix}_shin">
-
 
       <visual>
 
         <geometry>
-
           <cylinder
             radius="0.05"
             length="0.35"/>
-
         </geometry>
-
 
         <origin
           xyz="0 0 -0.175"/>
-
 
         <material name="dark_gray"/>
 
       </visual>
 
-
-
-      <collision>
-
-        <geometry>
-
-          <cylinder
-            radius="0.05"
-            length="0.35"/>
-
-        </geometry>
-
-
-        <origin
-          xyz="0 0 -0.175"/>
-
-
-      </collision>
-
-
-
-      <inertial>
-
-        <mass value="0.7"/>
-
-
-        <origin
-          xyz="0 0 -0.175"/>
-
-
-        <inertia
-          ixx="0.006"
-          ixy="0"
-          ixz="0"
-          iyy="0.006"
-          iyz="0"
-          izz="0.001"/>
-
-
-      </inertial>
-
-
     </link>
 
 
 
-
-
-    <!-- ================= -->
     <!-- foot -->
-    <!-- ================= -->
-
 
     <link name="${prefix}_foot">
-
 
       <visual>
 
@@ -198,60 +98,13 @@
 
         <material name="black"/>
 
-
       </visual>
-
-
-
-
-      <collision>
-
-        <geometry>
-
-          <box size="0.25 0.15 0.08"/>
-
-        </geometry>
-
-
-        <origin
-          xyz="0.08 0 -0.04"/>
-
-
-      </collision>
-
-
-
-
-      <inertial>
-
-        <mass value="0.3"/>
-
-
-        <origin
-          xyz="0.08 0 -0.04"/>
-
-
-        <inertia
-          ixx="0.001"
-          ixy="0"
-          ixz="0"
-          iyy="0.002"
-          iyz="0"
-          izz="0.002"/>
-
-
-      </inertial>
-
-
 
     </link>
 
 
 
-
-
     <!-- knee -->
-
 
     <joint name="${prefix}_knee_joint"
            type="revolute">
@@ -281,10 +134,7 @@
 
 
 
-
-
     <!-- ankle -->
-
 
     <joint name="${prefix}_ankle_joint"
            type="fixed">

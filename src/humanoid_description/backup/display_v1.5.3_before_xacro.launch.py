@@ -2,7 +2,6 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 import os
-import xacro
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -13,20 +12,29 @@ def generate_launch_description():
         'humanoid_description'
     )
 
-
-    xacro_file = os.path.join(
+    urdf_path = os.path.join(
         pkg_path,
         'urdf',
-        'humanoid.xacro'
+        'humanoid.urdf'
     )
 
 
-    robot_description = xacro.process_file(
-        xacro_file
-    ).toxml()
+    with open(urdf_path, 'r') as file:
+        robot_description = file.read()
 
 
     return LaunchDescription([
+
+
+        Node(
+            package='joint_state_publisher_gui',
+            executable='joint_state_publisher_gui',
+            parameters=[
+                {
+                    'robot_description': robot_description
+                }
+            ]
+        ),
 
 
         Node(
@@ -41,11 +49,9 @@ def generate_launch_description():
         ),
 
 
-
         Node(
             package='rviz2',
-            executable='rviz2',
-            output='screen'
+            executable='rviz2'
         )
 
     ])
