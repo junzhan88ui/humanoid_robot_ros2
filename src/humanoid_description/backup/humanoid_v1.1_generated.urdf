@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+
+<robot name="humanoid_v1_1">
+
+
+  <!-- ================= -->
+  <!-- Base / Torso -->
+  <!-- ================= -->
+
+  <link name="base_link">
+
+    <visual>
+      <geometry>
+        <box size="0.4 0.25 0.5"/>
+      </geometry>
+
+      <origin xyz="0 0 0.25"/>
+
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+
+  </link>
+
+
+
+  <!-- ================= -->
+  <!-- Left Leg -->
+  <!-- ================= -->
+
+
+  <link name="left_thigh">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.06" length="0.35"/>
+      </geometry>
+
+      <origin xyz="0 0 -0.175"/>
+
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <link name="left_shin">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.05" length="0.35"/>
+      </geometry>
+
+      <origin xyz="0 0 -0.175"/>
+
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <link name="left_foot">
+
+    <visual>
+
+      <geometry>
+        <box size="0.25 0.15 0.08"/>
+      </geometry>
+
+      <origin xyz="0.08 0 -0.04"/>
+
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <!-- ================= -->
+  <!-- Right Leg -->
+  <!-- ================= -->
+
+
+  <link name="right_thigh">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.06" length="0.35"/>
+      </geometry>
+
+      <origin xyz="0 0 -0.175"/>
+
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <link name="right_shin">
+
+    <visual>
+
+      <geometry>
+        <cylinder radius="0.05" length="0.35"/>
+      </geometry>
+
+      <origin xyz="0 0 -0.175"/>
+
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <link name="right_foot">
+
+    <visual>
+
+      <geometry>
+        <box size="0.25 0.15 0.08"/>
+      </geometry>
+
+      <origin xyz="0.08 0 -0.04"/>
+
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+
+    </visual>
+
+  </link>
+
+
+
+  <!-- ================= -->
+  <!-- Joints -->
+  <!-- ================= -->
+
+
+  <!-- Left Hip -->
+
+  <joint name="left_hip_joint"
+         type="revolute">
+
+    <parent link="base_link"/>
+
+    <child link="left_thigh"/>
+
+    <origin xyz="0 0.15 0"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+
+  <!-- Left Knee -->
+
+  <joint name="left_knee_joint"
+         type="revolute">
+
+    <parent link="left_thigh"/>
+
+    <child link="left_shin"/>
+
+    <origin xyz="0 0 -0.35"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="0"
+      upper="2.5"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+
+  <!-- Left Ankle -->
+
+  <joint name="left_ankle_joint"
+         type="fixed">
+
+    <parent link="left_shin"/>
+
+    <child link="left_foot"/>
+
+    <origin xyz="0 0 -0.35"/>
+
+  </joint>
+
+
+
+  <!-- Right Hip -->
+
+  <joint name="right_hip_joint"
+         type="revolute">
+
+    <parent link="base_link"/>
+
+    <child link="right_thigh"/>
+
+    <origin xyz="0 -0.15 0"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+
+  <!-- Right Knee -->
+
+  <joint name="right_knee_joint"
+         type="revolute">
+
+    <parent link="right_thigh"/>
+
+    <child link="right_shin"/>
+
+    <origin xyz="0 0 -0.35"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="0"
+      upper="2.5"
+      effort="10"
+      velocity="1"/>
+
+  </joint>
+
+
+
+  <!-- Right Ankle -->
+
+  <joint name="right_ankle_joint"
+         type="fixed">
+
+    <parent link="right_shin"/>
+
+    <child link="right_foot"/>
+
+    <origin xyz="0 0 -0.35"/>
+
+  </joint>
+
+
+</robot>
+

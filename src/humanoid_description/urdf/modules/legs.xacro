@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <!-- ===================== -->
+  <!-- Materials -->
+  <!-- ===================== -->
+
+
+  <material name="gray">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+
+
+  <material name="dark_gray">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
+
+  <material name="black">
+    <color rgba="0.1 0.1 0.1 1"/>
+  </material>
+
+
+
+  <!-- ===================== -->
+  <!-- Leg Link Macro -->
+  <!-- ===================== -->
+
+
+  <xacro:macro name="leg"
+               params="prefix ">
+
+
+    <!-- thigh -->
+
+    <link name="${prefix}_thigh">
+
+      <visual>
+
+        <geometry>
+          <cylinder
+            radius="0.06"
+            length="0.35"/>
+        </geometry>
+
+        <origin
+          xyz="0 0 -0.175"/>
+
+        <material name="gray"/>
+
+      </visual>
+
+    </link>
+
+
+
+    <!-- shin -->
+
+    <link name="${prefix}_shin">
+
+      <visual>
+
+        <geometry>
+          <cylinder
+            radius="0.05"
+            length="0.35"/>
+        </geometry>
+
+        <origin
+          xyz="0 0 -0.175"/>
+
+        <material name="dark_gray"/>
+
+      </visual>
+
+    </link>
+
+
+
+    <!-- foot -->
+
+    <link name="${prefix}_foot">
+
+      <visual>
+
+        <geometry>
+
+          <box size="0.25 0.15 0.08"/>
+
+        </geometry>
+
+
+        <origin
+          xyz="0.08 0 -0.04"/>
+
+
+        <material name="black"/>
+
+      </visual>
+
+    </link>
+
+
+
+    <!-- knee -->
+
+    <joint name="${prefix}_knee_joint"
+           type="revolute">
+
+
+      <parent link="${prefix}_thigh"/>
+
+
+      <child link="${prefix}_shin"/>
+
+
+      <origin
+        xyz="0 0 -0.35"/>
+
+
+      <axis xyz="1 0 0"/>
+
+
+      <limit
+        lower="0"
+        upper="2.5"
+        effort="10"
+        velocity="1"/>
+
+
+    </joint>
+
+
+
+    <!-- ankle -->
+
+    <joint name="${prefix}_ankle_joint"
+           type="fixed">
+
+
+      <parent link="${prefix}_shin"/>
+
+
+      <child link="${prefix}_foot"/>
+
+
+      <origin
+        xyz="0 0 -0.35"/>
+
+
+    </joint>
+
+
+
+  </xacro:macro>
+
+
+</robot>
+
