@@ -73,6 +73,22 @@
 
 
 
+    <joint name="torso_joint"
+           type="fixed">
+
+
+      <parent link="base_link"/>
+
+
+      <child link="torso_link"/>
+
+
+      <origin
+        xyz="0 0 0.55"/>
+
+
+    </joint>
+
 
   </xacro:macro>
 
