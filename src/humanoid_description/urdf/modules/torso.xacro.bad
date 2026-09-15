@@ -7,7 +7,7 @@
   <!-- ===================== -->
 
 
-  <material name="pelvis_blue">
+  <material name="torso_blue">
 
     <color rgba="0 0.3 1 1"/>
 
@@ -16,34 +16,34 @@
 
 
   <!-- ===================== -->
-  <!-- Pelvis Macro -->
+  <!-- Torso Macro -->
   <!-- ===================== -->
 
 
-  <xacro:macro name="pelvis">
+  <xacro:macro name="torso">
 
 
 
     <!-- ================= -->
-    <!-- Pelvis Link -->
+    <!-- Torso Link -->
     <!-- ================= -->
 
 
-    <link name="pelvis_link">
+    <link name="torso_link">
 
 
 
       <!-- Visual -->
-
 
       <visual>
 
 
         <geometry>
 
-          <box size="0.35 0.30 0.20"/>
+          <box size="0.45 0.30 0.55"/>
 
         </geometry>
+
 
 
         <origin
@@ -51,7 +51,8 @@
           xyz="0 0 0"/>
 
 
-        <material name="pelvis_blue"/>
+
+        <material name="torso_blue"/>
 
 
       </visual>
@@ -62,15 +63,15 @@
 
       <!-- Collision -->
 
-
       <collision>
 
 
         <geometry>
 
-          <box size="0.35 0.30 0.20"/>
+          <box size="0.45 0.30 0.55"/>
 
         </geometry>
+
 
 
         <origin
@@ -86,11 +87,11 @@
 
       <!-- Inertial -->
 
-
       <inertial>
 
 
-        <mass value="2.5"/>
+        <mass value="5.0"/>
+
 
 
         <origin
@@ -102,7 +103,7 @@
         <inertia
 
 
-          ixx="0.025"
+          ixx="0.12"
 
 
           ixy="0"
@@ -111,13 +112,13 @@
           ixz="0"
 
 
-          iyy="0.020"
+          iyy="0.10"
 
 
           iyz="0"
 
 
-          izz="0.015"/>
+          izz="0.08"/>
 
 
       </inertial>
@@ -125,6 +126,33 @@
 
 
     </link>
+
+
+
+
+
+    <!-- ================= -->
+    <!-- Torso-Pelvis Joint -->
+    <!-- ================= -->
+
+
+    <joint name="torso_joint"
+
+           type="fixed">
+
+
+      <parent link="pelvis_link"/>
+
+
+      <child link="torso_link"/>
+
+
+      <origin
+
+        xyz="0 0 0.20"/>
+
+
+    </joint>
 
 
 

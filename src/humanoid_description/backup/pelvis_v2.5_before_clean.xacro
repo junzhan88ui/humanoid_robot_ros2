@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-
-  <!-- ===================== -->
-  <!-- Materials -->
-  <!-- ===================== -->
 
 
   <material name="pelvis_blue">
@@ -15,29 +11,13 @@
 
 
 
-  <!-- ===================== -->
-  <!-- Pelvis Macro -->
-  <!-- ===================== -->
-
-
   <xacro:macro name="pelvis">
-
-
-
-    <!-- ================= -->
-    <!-- Pelvis Link -->
-    <!-- ================= -->
 
 
     <link name="pelvis_link">
 
 
-
-      <!-- Visual -->
-
-
       <visual>
-
 
         <geometry>
 
@@ -47,7 +27,6 @@
 
 
         <origin
-
           xyz="0 0 0"/>
 
 
@@ -58,13 +37,7 @@
 
 
 
-
-
-      <!-- Collision -->
-
-
       <collision>
-
 
         <geometry>
 
@@ -74,17 +47,11 @@
 
 
         <origin
-
           xyz="0 0 0"/>
 
 
       </collision>
 
-
-
-
-
-      <!-- Inertial -->
 
 
       <inertial>
@@ -94,42 +61,32 @@
 
 
         <origin
-
           xyz="0 0 0"/>
-
 
 
         <inertia
 
-
-          ixx="0.025"
-
+          ixx="0.02"
 
           ixy="0"
 
-
           ixz="0"
 
-
-          iyy="0.020"
-
+          iyy="0.02"
 
           iyz="0"
 
-
-          izz="0.015"/>
+          izz="0.01"/>
 
 
       </inertial>
 
 
-
     </link>
-
 
 
   </xacro:macro>
 
 
-
 </robot>
+

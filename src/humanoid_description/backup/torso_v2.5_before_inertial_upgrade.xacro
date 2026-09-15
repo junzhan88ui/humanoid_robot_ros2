@@ -1,45 +1,23 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-  <!-- ===================== -->
-  <!-- Materials -->
-  <!-- ===================== -->
-
-
   <material name="torso_blue">
-
-    <color rgba="0 0.3 1 1"/>
-
+    <color rgba="0 0 0.8 1"/>
   </material>
-
-
-
-  <!-- ===================== -->
-  <!-- Torso Macro -->
-  <!-- ===================== -->
 
 
   <xacro:macro name="torso">
 
 
-
-    <!-- ================= -->
-    <!-- Torso Link -->
-    <!-- ================= -->
-
-
     <link name="torso_link">
-
-
-
-      <!-- Visual -->
 
       <visual>
 
         <geometry>
 
-          <box size="0.45 0.30 0.55"/>
+          <box size="0.45 0.3 0.55"/>
 
         </geometry>
 
@@ -54,15 +32,11 @@
 
 
 
-
-
-      <!-- Collision -->
-
       <collision>
 
         <geometry>
 
-          <box size="0.45 0.30 0.55"/>
+          <box size="0.45 0.3 0.55"/>
 
         </geometry>
 
@@ -70,14 +44,9 @@
         <origin
           xyz="0 0 0"/>
 
-
       </collision>
 
 
-
-
-
-      <!-- Inertial -->
 
       <inertial>
 
@@ -89,25 +58,19 @@
 
 
         <inertia
-
-          ixx="0.12"
-
+          ixx="0.05"
           ixy="0"
-
           ixz="0"
-
-          iyy="0.10"
-
+          iyy="0.05"
           iyz="0"
-
-          izz="0.08"/>
+          izz="0.03"/>
 
 
       </inertial>
 
 
-
     </link>
+
 
 
 
@@ -115,3 +78,4 @@
 
 
 </robot>
+

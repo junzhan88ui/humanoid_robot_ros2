@@ -8,12 +8,17 @@
 
 
   <material name="arm_gray">
-    <color rgba="0.65 0.65 0.65 1"/>
+
+    <color rgba="0.55 0.55 0.55 1"/>
+
   </material>
 
 
+
   <material name="hand_black">
+
     <color rgba="0.1 0.1 0.1 1"/>
+
   </material>
 
 
@@ -24,7 +29,7 @@
 
 
   <xacro:macro name="arm"
-               params="prefix side">
+               params="prefix">
 
 
 
@@ -38,11 +43,13 @@
 
       <visual>
 
+
         <geometry>
 
           <cylinder
-            radius="0.045"
+            radius="0.06"
             length="0.30"/>
+
 
         </geometry>
 
@@ -58,13 +65,16 @@
 
 
 
+
       <collision>
+
 
         <geometry>
 
           <cylinder
-            radius="0.045"
+            radius="0.06"
             length="0.30"/>
+
 
         </geometry>
 
@@ -77,9 +87,11 @@
 
 
 
+
       <inertial>
 
-        <mass value="0.8"/>
+
+        <mass value="1.2"/>
 
 
         <origin
@@ -88,17 +100,17 @@
 
         <inertia
 
-          ixx="0.006"
+          ixx="0.012"
 
           ixy="0"
 
           ixz="0"
 
-          iyy="0.006"
+          iyy="0.012"
 
           iyz="0"
 
-          izz="0.001"/>
+          izz="0.004"/>
 
 
       </inertial>
@@ -120,20 +132,22 @@
 
       <visual>
 
+
         <geometry>
 
           <cylinder
 
-            radius="0.035"
+            radius="0.05"
 
-            length="0.25"/>
+            length="0.28"/>
+
 
         </geometry>
 
 
         <origin
 
-          xyz="0 0 -0.125"/>
+          xyz="0 0 -0.14"/>
 
 
         <material name="arm_gray"/>
@@ -143,52 +157,56 @@
 
 
 
+
       <collision>
+
 
         <geometry>
 
           <cylinder
 
-            radius="0.035"
+            radius="0.05"
 
-            length="0.25"/>
+            length="0.28"/>
+
 
         </geometry>
 
 
         <origin
 
-          xyz="0 0 -0.125"/>
+          xyz="0 0 -0.14"/>
 
 
       </collision>
 
 
 
+
       <inertial>
 
 
-        <mass value="0.5"/>
+        <mass value="0.8"/>
 
 
         <origin
 
-          xyz="0 0 -0.125"/>
+          xyz="0 0 -0.14"/>
 
 
         <inertia
 
-          ixx="0.003"
+          ixx="0.008"
 
           ixy="0"
 
           ixz="0"
 
-          iyy="0.003"
+          iyy="0.008"
 
           iyz="0"
 
-          izz="0.0008"/>
+          izz="0.002"/>
 
 
       </inertial>
@@ -213,14 +231,16 @@
 
         <geometry>
 
-          <box size="0.12 0.08 0.05"/>
+
+          <box size="0.16 0.10 0.08"/>
+
 
         </geometry>
 
 
         <origin
 
-          xyz="0 -0.02 -0.025"/>
+          xyz="0 0 -0.04"/>
 
 
         <material name="hand_black"/>
@@ -230,161 +250,59 @@
 
 
 
+
       <collision>
 
 
         <geometry>
 
-          <box size="0.12 0.08 0.05"/>
+
+          <box size="0.16 0.10 0.08"/>
+
 
         </geometry>
 
 
         <origin
 
-          xyz="0 -0.02 -0.025"/>
+          xyz="0 0 -0.04"/>
 
 
       </collision>
 
 
 
+
       <inertial>
 
 
-        <mass value="0.2"/>
+        <mass value="0.3"/>
 
 
         <origin
 
-          xyz="0 -0.02 -0.025"/>
+          xyz="0 0 -0.04"/>
 
 
         <inertia
 
-          ixx="0.0005"
+          ixx="0.002"
 
           ixy="0"
 
           ixz="0"
 
-          iyy="0.0005"
+          iyy="0.002"
 
           iyz="0"
 
-          izz="0.0005"/>
+          izz="0.001"/>
 
 
       </inertial>
 
 
     </link>
-
-
-
-
-
-    <!-- ================= -->
-    <!-- Shoulder Joint -->
-    <!-- ================= -->
-
-
-    <joint name="${prefix}_shoulder_joint"
-           type="revolute">
-
-
-      <parent link="torso_link"/>
-
-
-      <child link="${prefix}_upper_arm"/>
-
-
-      <origin
-
-        xyz="0 ${side} 0.15"/>
-
-
-      <axis xyz="1 0 0"/>
-
-
-      <limit
-
-        lower="-1.57"
-
-        upper="1.57"
-
-        effort="30"
-
-        velocity="2"/>
-
-
-    </joint>
-
-
-
-
-
-    <!-- ================= -->
-    <!-- Elbow Joint -->
-    <!-- ================= -->
-
-
-    <joint name="${prefix}_elbow_joint"
-           type="revolute">
-
-
-      <parent link="${prefix}_upper_arm"/>
-
-
-      <child link="${prefix}_forearm"/>
-
-
-      <origin
-
-        xyz="0 0 -0.30"/>
-
-
-      <axis xyz="1 0 0"/>
-
-
-      <limit
-
-        lower="-2.0"
-
-        upper="0"
-
-        effort="20"
-
-        velocity="2"/>
-
-
-    </joint>
-
-
-
-
-
-    <!-- ================= -->
-    <!-- Wrist Joint -->
-    <!-- ================= -->
-
-
-    <joint name="${prefix}_wrist_joint"
-           type="fixed">
-
-
-      <parent link="${prefix}_forearm"/>
-
-
-      <child link="${prefix}_hand"/>
-
-
-      <origin
-
-        xyz="0 0 -0.25"/>
-
-
-    </joint>
 
 
 

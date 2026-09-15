@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
@@ -14,13 +15,11 @@
   </material>
 
 
+  <material name="sensor_black">
 
-  <material name="neck_dark">
-
-    <color rgba="0.25 0.25 0.25 1"/>
+    <color rgba="0.05 0.05 0.05 1"/>
 
   </material>
-
 
 
 
@@ -32,6 +31,7 @@
   <xacro:macro name="head">
 
 
+
     <!-- Neck -->
 
 
@@ -40,23 +40,20 @@
 
       <visual>
 
-
         <geometry>
 
           <cylinder
-
-            radius="0.06"
-
-            length="0.20"/>
+            radius="0.08"
+            length="0.15"/>
 
         </geometry>
 
 
         <origin
-          xyz="0 0 0"/>
+          xyz="0 0 -0.075"/>
 
 
-        <material name="neck_dark"/>
+        <material name="head_gray"/>
 
 
       </visual>
@@ -65,20 +62,17 @@
 
       <collision>
 
-
         <geometry>
 
           <cylinder
-
-            radius="0.06"
-
-            length="0.20"/>
+            radius="0.08"
+            length="0.15"/>
 
         </geometry>
 
 
         <origin
-          xyz="0 0 0"/>
+          xyz="0 0 -0.075"/>
 
 
       </collision>
@@ -92,22 +86,19 @@
 
 
         <origin
-          xyz="0 0 0"/>
+          xyz="0 0 -0.075"/>
 
 
         <inertia
 
           ixx="0.002"
-
           ixy="0"
-
           ixz="0"
 
           iyy="0.002"
-
           iyz="0"
 
-          izz="0.002"/>
+          izz="0.001"/>
 
 
       </inertial>
@@ -118,8 +109,8 @@
 
 
 
-
     <!-- Head -->
+
 
 
     <link name="head_link">
@@ -130,13 +121,18 @@
 
         <geometry>
 
-          <sphere radius="0.18"/>
+
+          <sphere
+            radius="0.16"/>
+
 
         </geometry>
 
 
+
         <origin
           xyz="0 0 0"/>
+
 
 
         <material name="head_gray"/>
@@ -146,12 +142,16 @@
 
 
 
+
       <collision>
 
 
         <geometry>
 
-          <sphere radius="0.18"/>
+
+          <sphere
+            radius="0.16"/>
+
 
         </geometry>
 
@@ -177,17 +177,14 @@
 
         <inertia
 
-          ixx="0.005"
-
+          ixx="0.01"
           ixy="0"
-
           ixz="0"
 
-          iyy="0.005"
-
+          iyy="0.01"
           iyz="0"
 
-          izz="0.005"/>
+          izz="0.01"/>
 
 
       </inertial>
@@ -198,8 +195,70 @@
 
 
 
+
+    <!-- Neck Joint -->
+
+
+    <joint name="neck_joint"
+           type="revolute">
+
+
+      <parent link="torso_link"/>
+
+
+      <child link="neck_link"/>
+
+
+      <origin
+
+        xyz="0 0 0.35"/>
+
+
+      <axis
+
+        xyz="0 1 0"/>
+
+
+      <limit
+
+        lower="-1.0"
+        upper="1.0"
+        effort="10"
+        velocity="1"/>
+
+
+    </joint>
+
+
+
+
+
+    <!-- Head Joint -->
+
+
+    <joint name="head_joint"
+           type="fixed">
+
+
+      <parent link="neck_link"/>
+
+
+      <child link="head_link"/>
+
+
+      <origin
+
+        xyz="0 0 0.15"/>
+
+
+    </joint>
+
+
+
+
   </xacro:macro>
 
 
 
 </robot>
+

@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="humanoid_v1_9">
+
+
+  <!-- ================= -->
+  <!-- Include Modules -->
+  <!-- ================= -->
+
+
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/legs.xacro"/>
+
+
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/pelvis.xacro"/>
+
+
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/torso.xacro"/>
+
+
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/arms.xacro"/>
+
+
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/head.xacro"/>
+
+
+
+  <!-- ================= -->
+  <!-- Root Link -->
+  <!-- ================= -->
+
+
+  <link name="base_link"/>
+
+
+
+  <!-- ================= -->
+  <!-- Pelvis -->
+  <!-- ================= -->
+
+
+  <xacro:pelvis/>
+
+
+
+  <joint name="base_to_pelvis"
+         type="fixed">
+
+
+    <parent link="base_link"/>
+
+
+    <child link="pelvis_link"/>
+
+
+    <origin
+      xyz="0 0 0.85"/>
+
+
+  </joint>
+
+
+
+  <!-- ================= -->
+  <!-- Torso -->
+  <!-- ================= -->
+
+
+  <xacro:torso/>
+
+
+  <joint name="pelvis_to_torso"
+         type="fixed">
+
+
+    <parent link="pelvis_link"/>
+
+
+    <child link="torso_link"/>
+
+
+    <origin
+      xyz="0 0 0.35"/>
+
+
+  </joint>
+
+
+
+
+  <!-- ================= -->
+  <!-- Legs -->
+  <!-- ================= -->
+
+
+  <xacro:leg prefix="left"/>
+
+  <xacro:leg prefix="right"/>
+
+
+
+  <joint name="left_hip_joint"
+         type="revolute">
+
+
+    <parent link="pelvis_link"/>
+
+    <child link="left_thigh"/>
+
+
+    <origin
+      xyz="0 0.15 0"/>
+
+
+    <axis xyz="1 0 0"/>
+
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="20"
+      velocity="1"/>
+
+
+  </joint>
+
+
+
+  <joint name="right_hip_joint"
+         type="revolute">
+
+
+    <parent link="pelvis_link"/>
+
+    <child link="right_thigh"/>
+
+
+    <origin
+      xyz="0 -0.15 0"/>
+
+
+    <axis xyz="1 0 0"/>
+
+
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="20"
+      velocity="1"/>
+
+
+  </joint>
+
+
+
+
+  <!-- ================= -->
+  <!-- Arms -->
+  <!-- ================= -->
+
+
+  <xacro:arm
+    prefix="left"/>
+
+
+  <xacro:arm
+    prefix="right"/>
+
+
+
+
+  <!-- ================= -->
+  <!-- Head -->
+  <!-- ================= -->
+
+
+  <xacro:head/>
+
+
+
+
+</robot>
+
