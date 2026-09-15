@@ -4,7 +4,7 @@
 
 
   <!-- ================= -->
-  <!-- Include Modules -->
+  <!-- Modules -->
   <!-- ================= -->
 
 
@@ -28,6 +28,10 @@
     filename="$(find humanoid_description)/urdf/modules/head.xacro"/>
 
 
+  <!-- ROS2 Control -->
+  <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/ros2_control.xacro"/>
+
 
 
   <!-- ================= -->
@@ -36,7 +40,6 @@
 
 
   <link name="base_link">
-
 
     <visual>
 
@@ -47,8 +50,7 @@
       </geometry>
 
 
-      <origin
-        xyz="0 0 0.25"/>
+      <origin xyz="0 0 0.25"/>
 
 
       <material name="blue">
@@ -61,7 +63,6 @@
     </visual>
 
 
-
     <collision>
 
       <geometry>
@@ -71,42 +72,29 @@
       </geometry>
 
 
-      <origin
-        xyz="0 0 0.25"/>
+      <origin xyz="0 0 0.25"/>
 
     </collision>
-
 
 
     <inertial>
 
       <mass value="5"/>
 
-
-      <origin
-        xyz="0 0 0.25"/>
-
+      <origin xyz="0 0 0.25"/>
 
       <inertia
-
         ixx="0.05"
-
         ixy="0"
-
         ixz="0"
-
         iyy="0.05"
-
         iyz="0"
-
         izz="0.05"/>
-
 
     </inertial>
 
 
   </link>
-
 
 
 
@@ -126,13 +114,10 @@
 
     <child link="pelvis_link"/>
 
-
-    <origin
-      xyz="0 0 0.85"/>
+    <origin xyz="0 0 0.85"/>
 
 
   </joint>
-
 
 
 
@@ -153,13 +138,10 @@
 
     <child link="torso_link"/>
 
-
-    <origin
-      xyz="0 0 0.35"/>
+    <origin xyz="0 0 0.35"/>
 
 
   </joint>
-
 
 
 
@@ -168,11 +150,9 @@
   <!-- ================= -->
 
 
-  <xacro:leg prefix="left"
-             side_y="0.15"/>
+  <xacro:leg prefix="left"/>
 
-  <xacro:leg prefix="right"
-             side_y="0.15"/>
+  <xacro:leg prefix="right"/>
 
 
 
@@ -182,11 +162,9 @@
   <!-- ================= -->
 
 
-  <xacro:arm prefix="left"
-             side_y="0.25"/>
+  <xacro:arm prefix="left"/>
 
-  <xacro:arm prefix="right"
-             side_y="0.25"/>
+  <xacro:arm prefix="right"/>
 
 
 
@@ -199,4 +177,6 @@
   <xacro:head/>
 
 
+
 </robot>
+

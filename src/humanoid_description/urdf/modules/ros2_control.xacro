@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <!-- =============================== -->
+  <!-- ROS2 Control Definition -->
+  <!-- Humanoid Robot V2.8.0 -->
+  <!-- =============================== -->
+
+
+  <ros2_control
+      name="HumanoidSystem"
+      type="system">
+
+
+    <hardware>
+
+      <plugin>
+        mock_components/GenericSystem
+      </plugin>
+
+    </hardware>
+
+
+
+    <!-- ================= -->
+    <!-- Legs -->
+    <!-- ================= -->
+
+
+    <joint name="left_hip_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+    <joint name="right_hip_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+
+    <joint name="left_knee_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+    <joint name="right_knee_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+
+    <!-- ================= -->
+    <!-- Arms -->
+    <!-- ================= -->
+
+
+    <joint name="left_shoulder_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+    <joint name="right_shoulder_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+    <joint name="left_elbow_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+    <joint name="right_elbow_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+
+
+    <!-- ================= -->
+    <!-- Neck -->
+    <!-- ================= -->
+
+
+    <joint name="neck_joint">
+
+      <command_interface name="position"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+
+    </joint>
+
+
+  </ros2_control>
+
+
+</robot>

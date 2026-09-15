@@ -2,26 +2,29 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-  <!-- ================= -->
+  <!-- ===================== -->
   <!-- Materials -->
-  <!-- ================= -->
+  <!-- ===================== -->
 
 
   <material name="leg_gray">
-
     <color rgba="0.55 0.55 0.55 1"/>
+  </material>
 
+
+  <material name="foot_black">
+    <color rgba="0.1 0.1 0.1 1"/>
   </material>
 
 
 
-  <!-- ================= -->
-  <!-- Legs Macro -->
-  <!-- ================= -->
+  <!-- ===================== -->
+  <!-- Leg Macro -->
+  <!-- ===================== -->
 
 
   <xacro:macro name="leg"
-               params="prefix side_y">
+               params="prefix">
 
 
     <!-- ================= -->
@@ -43,11 +46,11 @@
         </geometry>
 
 
-        <origin xyz="0 0 -0.175"/>
+        <origin
+          xyz="0 0 -0.175"/>
 
 
         <material name="leg_gray"/>
-
 
       </visual>
 
@@ -64,8 +67,8 @@
         </geometry>
 
 
-        <origin xyz="0 0 -0.175"/>
-
+        <origin
+          xyz="0 0 -0.175"/>
 
       </collision>
 
@@ -75,26 +78,29 @@
 
         <mass value="1.5"/>
 
-        <origin xyz="0 0 -0.175"/>
+
+        <origin
+          xyz="0 0 -0.175"/>
 
 
         <inertia
 
           ixx="0.015"
+
           ixy="0"
+
           ixz="0"
 
           iyy="0.015"
+
           iyz="0"
 
           izz="0.003"/>
-
 
       </inertial>
 
 
     </link>
-
 
 
 
@@ -109,23 +115,20 @@
 
       <visual>
 
-
         <geometry>
 
           <cylinder
-
             radius="0.055"
-
             length="0.35"/>
 
         </geometry>
 
 
-        <origin xyz="0 0 -0.175"/>
+        <origin
+          xyz="0 0 -0.175"/>
 
 
         <material name="leg_gray"/>
-
 
       </visual>
 
@@ -133,41 +136,43 @@
 
       <collision>
 
-
         <geometry>
 
           <cylinder
-
             radius="0.055"
-
             length="0.35"/>
 
         </geometry>
 
 
-        <origin xyz="0 0 -0.175"/>
+        <origin
+          xyz="0 0 -0.175"/>
 
 
       </collision>
 
 
 
-      <inertial>
 
+      <inertial>
 
         <mass value="1.0"/>
 
 
-        <origin xyz="0 0 -0.175"/>
+        <origin
+          xyz="0 0 -0.175"/>
 
 
         <inertia
 
           ixx="0.01"
+
           ixy="0"
+
           ixz="0"
 
           iyy="0.01"
+
           iyz="0"
 
           izz="0.002"/>
@@ -195,15 +200,16 @@
 
         <geometry>
 
-          <box size="0.25 0.15 0.08"/>
+          <box size="0.25 0.14 0.08"/>
 
         </geometry>
 
 
-        <origin xyz="0 0 -0.04"/>
+        <origin
+          xyz="0.08 0 -0.04"/>
 
 
-        <material name="leg_gray"/>
+        <material name="foot_black"/>
 
 
       </visual>
@@ -215,15 +221,17 @@
 
         <geometry>
 
-          <box size="0.25 0.15 0.08"/>
+          <box size="0.25 0.14 0.08"/>
 
         </geometry>
 
 
-        <origin xyz="0 0 -0.04"/>
+        <origin
+          xyz="0.08 0 -0.04"/>
 
 
       </collision>
+
 
 
 
@@ -233,62 +241,29 @@
         <mass value="0.5"/>
 
 
-        <origin xyz="0 0 -0.04"/>
+        <origin
+          xyz="0.08 0 -0.04"/>
 
 
         <inertia
 
-          ixx="0.004"
+          ixx="0.002"
+
           ixy="0"
+
           ixz="0"
 
           iyy="0.004"
+
           iyz="0"
 
-          izz="0.002"/>
+          izz="0.005"/>
 
 
       </inertial>
 
 
     </link>
-
-
-
-
-
-    <!-- ================= -->
-    <!-- Hip Joint -->
-    <!-- ================= -->
-
-
-    <joint name="${prefix}_hip_joint"
-            type="revolute">
-
-
-      <parent link="pelvis_link"/>
-
-      <child link="${prefix}_thigh"/>
-
-
-      <origin xyz="0 ${side_y} 0"/>
-
-
-      <axis xyz="1 0 0"/>
-
-
-      <limit
-
-        effort="40"
-
-        lower="-1.57"
-
-        upper="1.57"
-
-        velocity="2"/>
-
-
-    </joint>
 
 
 
@@ -308,7 +283,8 @@
       <child link="${prefix}_shin"/>
 
 
-      <origin xyz="0 0 -0.35"/>
+      <origin
+        xyz="0 0 -0.35"/>
 
 
       <axis xyz="1 0 0"/>
@@ -316,11 +292,11 @@
 
       <limit
 
-        effort="30"
+        lower="0"
 
-        lower="-1.57"
+        upper="2.5"
 
-        upper="0"
+        effort="50"
 
         velocity="2"/>
 
@@ -332,7 +308,7 @@
 
 
     <!-- ================= -->
-    <!-- Ankle -->
+    <!-- Ankle Joint -->
     <!-- ================= -->
 
 
@@ -345,7 +321,8 @@
       <child link="${prefix}_foot"/>
 
 
-      <origin xyz="0 0 -0.35"/>
+      <origin
+        xyz="0 0 -0.35"/>
 
 
     </joint>

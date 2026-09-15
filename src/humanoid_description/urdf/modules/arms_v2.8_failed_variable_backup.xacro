@@ -14,7 +14,7 @@
 
 
   <xacro:macro name="arm"
-               params="prefix side_y">
+               params="prefix">
 
 
     <!-- Upper Arm -->
@@ -22,12 +22,9 @@
     <link name="${prefix}_upper_arm">
 
       <visual>
-
         <geometry>
-
           <cylinder radius="0.06"
                     length="0.30"/>
-
         </geometry>
 
         <origin xyz="0 0 -0.15"/>
@@ -38,12 +35,9 @@
 
 
       <collision>
-
         <geometry>
-
           <cylinder radius="0.06"
                     length="0.30"/>
-
         </geometry>
 
         <origin xyz="0 0 -0.15"/>
@@ -67,15 +61,12 @@
 
       </inertial>
 
-
     </link>
 
 
 
 
-
     <!-- Forearm -->
-
 
     <link name="${prefix}_forearm">
 
@@ -92,11 +83,10 @@
 
         <origin xyz="0 0 -0.14"/>
 
-
         <material name="arm_gray"/>
 
-
       </visual>
+
 
 
       <collision>
@@ -111,7 +101,6 @@
 
         <origin xyz="0 0 -0.14"/>
 
-
       </collision>
 
 
@@ -121,7 +110,6 @@
         <mass value="0.8"/>
 
         <origin xyz="0 0 -0.14"/>
-
 
         <inertia
           ixx="0.008"
@@ -142,7 +130,6 @@
 
     <!-- Hand -->
 
-
     <link name="${prefix}_hand">
 
 
@@ -157,12 +144,9 @@
 
         <origin xyz="0 0 -0.04"/>
 
-
         <material name="hand_black"/>
 
-
       </visual>
-
 
 
       <collision>
@@ -176,9 +160,7 @@
 
         <origin xyz="0 0 -0.04"/>
 
-
       </collision>
-
 
 
       <inertial>
@@ -196,7 +178,6 @@
           iyz="0"
           izz="0.001"/>
 
-
       </inertial>
 
 
@@ -206,7 +187,7 @@
 
 
 
-    <!-- Shoulder -->
+    <!-- Shoulder Joint -->
 
     <joint name="${prefix}_shoulder_joint"
            type="revolute">
@@ -217,7 +198,8 @@
       <child link="${prefix}_upper_arm"/>
 
 
-      <origin xyz="0 ${side_y} 0.15"/>
+      <origin
+        xyz="0 ${prefix}_arm_y 0.15"/>
 
 
       <axis xyz="1 0 0"/>
@@ -236,8 +218,7 @@
 
 
 
-    <!-- Elbow -->
-
+    <!-- Elbow Joint -->
 
     <joint name="${prefix}_elbow_joint"
            type="revolute">
@@ -248,7 +229,8 @@
       <child link="${prefix}_forearm"/>
 
 
-      <origin xyz="0 0 -0.30"/>
+      <origin
+        xyz="0 0 -0.30"/>
 
 
       <axis xyz="1 0 0"/>
@@ -267,8 +249,7 @@
 
 
 
-    <!-- Wrist -->
-
+    <!-- Wrist Joint -->
 
     <joint name="${prefix}_wrist_joint"
            type="fixed">
@@ -279,14 +260,15 @@
       <child link="${prefix}_hand"/>
 
 
-      <origin xyz="0 0 -0.28"/>
+      <origin
+        xyz="0 0 -0.28"/>
 
 
     </joint>
+
 
 
   </xacro:macro>
 
 
 </robot>
-

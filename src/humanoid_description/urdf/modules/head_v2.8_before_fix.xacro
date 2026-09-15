@@ -8,22 +8,28 @@
 
 
   <material name="head_gray">
+
     <color rgba="0.65 0.65 0.65 1"/>
+
   </material>
 
 
   <material name="neck_dark">
+
     <color rgba="0.25 0.25 0.25 1"/>
+
   </material>
 
 
 
   <!-- ================= -->
-  <!-- Head Macro -->
+  <!-- Head Module -->
+  <!-- V2.8.0 -->
   <!-- ================= -->
 
 
   <xacro:macro name="head">
+
 
 
     <!-- ================= -->
@@ -45,10 +51,12 @@
         </geometry>
 
 
-        <origin xyz="0 0 0"/>
+        <origin
+          xyz="0 0 0"/>
 
 
         <material name="neck_dark"/>
+
 
       </visual>
 
@@ -65,7 +73,8 @@
         </geometry>
 
 
-        <origin xyz="0 0 0"/>
+        <origin
+          xyz="0 0 0"/>
 
       </collision>
 
@@ -75,25 +84,23 @@
 
         <mass value="0.5"/>
 
-        <origin xyz="0 0 0"/>
+        <origin
+          xyz="0 0 0"/>
 
 
         <inertia
-
           ixx="0.002"
           ixy="0"
           ixz="0"
-
           iyy="0.002"
           iyz="0"
-
           izz="0.002"/>
+
 
       </inertial>
 
 
     </link>
-
 
 
 
@@ -115,10 +122,12 @@
         </geometry>
 
 
-        <origin xyz="0 0 0"/>
+        <origin
+          xyz="0 0 0"/>
 
 
         <material name="head_gray"/>
+
 
       </visual>
 
@@ -133,7 +142,8 @@
         </geometry>
 
 
-        <origin xyz="0 0 0"/>
+        <origin
+          xyz="0 0 0"/>
 
       </collision>
 
@@ -143,19 +153,19 @@
 
         <mass value="1.0"/>
 
-        <origin xyz="0 0 0"/>
+
+        <origin
+          xyz="0 0 0"/>
 
 
         <inertia
-
           ixx="0.005"
           ixy="0"
           ixz="0"
-
           iyy="0.005"
           iyz="0"
-
           izz="0.005"/>
+
 
       </inertial>
 
@@ -165,67 +175,31 @@
 
 
 
-
     <!-- ================= -->
-    <!-- Neck Joint -->
+    <!-- Neck To Head Joint -->
     <!-- ================= -->
 
 
     <joint name="neck_joint"
-           type="revolute">
-
-
-      <parent link="torso_link"/>
-
-
-      <child link="neck_link"/>
-
-
-      <origin xyz="0 0 0.35"/>
-
-
-      <axis xyz="0 1 0"/>
-
-
-      <limit
-
-        effort="10"
-
-        lower="-1.0"
-
-        upper="1.0"
-
-        velocity="1"/>
-
-
-    </joint>
-
-
-
-
-
-    <!-- ================= -->
-    <!-- Head Fixed Joint -->
-    <!-- ================= -->
-
-
-    <joint name="head_joint"
            type="fixed">
 
 
       <parent link="neck_link"/>
 
-
       <child link="head_link"/>
 
 
-      <origin xyz="0 0 0.20"/>
+      <origin
+        xyz="0 0 0.18"/>
 
 
     </joint>
 
 
+
   </xacro:macro>
 
 
+
 </robot>
+

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"
-       name="humanoid_v2_8">
+       name="humanoid_v2_5">
 
 
   <!-- ================= -->
@@ -168,11 +168,9 @@
   <!-- ================= -->
 
 
-  <xacro:leg prefix="left"
-             side_y="0.15"/>
+  <xacro:leg prefix="left"/>
 
-  <xacro:leg prefix="right"
-             side_y="0.15"/>
+  <xacro:leg prefix="right"/>
 
 
 
@@ -182,11 +180,9 @@
   <!-- ================= -->
 
 
-  <xacro:arm prefix="left"
-             side_y="0.25"/>
+  <xacro:arm prefix="left"/>
 
-  <xacro:arm prefix="right"
-             side_y="0.25"/>
+  <xacro:arm prefix="right"/>
 
 
 
