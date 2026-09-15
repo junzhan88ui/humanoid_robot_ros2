@@ -27,7 +27,6 @@
                params="prefix side">
 
 
-
     <!-- ================= -->
     <!-- Upper Arm -->
     <!-- ================= -->
@@ -35,6 +34,25 @@
 
     <link name="${prefix}_upper_arm">
 
+<joint name="${prefix}_shoulder_joint"
+       type="revolute">
+
+  <parent link="torso_link"/>
+
+  <child link="${prefix}_upper_arm"/>
+
+  <origin
+    xyz="0 ${side} 0.15"/>
+
+  <axis xyz="1 0 0"/>
+
+  <limit
+    lower="-1.57"
+    upper="1.57"
+    effort="30"
+    velocity="2"/>
+
+</joint>
 
       <visual>
 
@@ -53,8 +71,8 @@
 
         <material name="arm_gray"/>
 
-
       </visual>
+
 
 
 
@@ -74,6 +92,7 @@
 
 
       </collision>
+
 
 
 
@@ -120,6 +139,7 @@
 
       <visual>
 
+
         <geometry>
 
           <cylinder
@@ -127,6 +147,7 @@
             radius="0.035"
 
             length="0.25"/>
+
 
         </geometry>
 
@@ -143,7 +164,10 @@
 
 
 
+
+
       <collision>
+
 
         <geometry>
 
@@ -152,6 +176,7 @@
             radius="0.035"
 
             length="0.25"/>
+
 
         </geometry>
 
@@ -165,6 +190,8 @@
 
 
 
+
+
       <inertial>
 
 
@@ -174,6 +201,7 @@
         <origin
 
           xyz="0 0 -0.125"/>
+
 
 
         <inertia
@@ -213,14 +241,18 @@
 
         <geometry>
 
+
           <box size="0.12 0.08 0.05"/>
 
+
         </geometry>
+
 
 
         <origin
 
           xyz="0 -0.02 -0.025"/>
+
 
 
         <material name="hand_black"/>
@@ -230,14 +262,19 @@
 
 
 
+
+
       <collision>
 
 
         <geometry>
 
+
           <box size="0.12 0.08 0.05"/>
 
+
         </geometry>
+
 
 
         <origin
@@ -246,6 +283,8 @@
 
 
       </collision>
+
+
 
 
 
@@ -285,52 +324,12 @@
 
 
     <!-- ================= -->
-    <!-- Shoulder Joint -->
-    <!-- ================= -->
-
-
-    <joint name="${prefix}_shoulder_joint"
-           type="revolute">
-
-
-      <parent link="torso_link"/>
-
-
-      <child link="${prefix}_upper_arm"/>
-
-
-      <origin
-
-        xyz="0 ${side} 0.15"/>
-
-
-      <axis xyz="1 0 0"/>
-
-
-      <limit
-
-        lower="-1.57"
-
-        upper="1.57"
-
-        effort="30"
-
-        velocity="2"/>
-
-
-    </joint>
-
-
-
-
-
-    <!-- ================= -->
     <!-- Elbow Joint -->
     <!-- ================= -->
 
 
     <joint name="${prefix}_elbow_joint"
-           type="revolute">
+            type="revolute">
 
 
       <parent link="${prefix}_upper_arm"/>
@@ -344,7 +343,9 @@
         xyz="0 0 -0.30"/>
 
 
+
       <axis xyz="1 0 0"/>
+
 
 
       <limit
@@ -353,7 +354,7 @@
 
         upper="0"
 
-        effort="20"
+        effort="30"
 
         velocity="2"/>
 
@@ -370,7 +371,7 @@
 
 
     <joint name="${prefix}_wrist_joint"
-           type="fixed">
+            type="fixed">
 
 
       <parent link="${prefix}_forearm"/>
@@ -384,6 +385,7 @@
         xyz="0 0 -0.25"/>
 
 
+
     </joint>
 
 
@@ -392,3 +394,4 @@
 
 
 </robot>
+
