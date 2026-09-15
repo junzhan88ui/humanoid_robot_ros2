@@ -2,19 +2,18 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-  <!-- ================================= -->
-  <!-- ROS2 Control Interface V3.0.0 -->
-  <!-- ================================= -->
+  <!-- =============================== -->
+  <!-- ROS2 Control Definition -->
+  <!-- Humanoid Robot V2.8.0 -->
+  <!-- =============================== -->
 
 
-  <ros2_control name="HumanoidSystem"
-                type="system">
+  <ros2_control
+      name="HumanoidSystem"
+      type="system">
 
 
     <hardware>
-
-      <!-- V3.0 使用模拟硬件 -->
-      <!-- 后续 V3.2 接 Gazebo -->
 
       <plugin>
         mock_components/GenericSystem
@@ -25,7 +24,7 @@
 
 
     <!-- ================= -->
-    <!-- Leg Joints -->
+    <!-- Legs -->
     <!-- ================= -->
 
 
@@ -51,6 +50,7 @@
 
 
 
+
     <joint name="left_knee_joint">
 
       <command_interface name="position"/>
@@ -73,8 +73,9 @@
 
 
 
+
     <!-- ================= -->
-    <!-- Arm Joints -->
+    <!-- Arms -->
     <!-- ================= -->
 
 
@@ -122,8 +123,9 @@
 
 
 
+
     <!-- ================= -->
-    <!-- Head -->
+    <!-- Neck -->
     <!-- ================= -->
 
 
