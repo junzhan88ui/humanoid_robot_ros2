@@ -17,20 +17,13 @@ install(
 
 
 # =========================
-# Install URDF files
+# Install robot description
+# Keep urdf/modules structure
 # =========================
-# 只安装正式模型文件
-# backup 文件不进入 install
 
 install(
   DIRECTORY urdf
   DESTINATION share/${PROJECT_NAME}
-  PATTERN "backup" EXCLUDE
-  PATTERN "*.old" EXCLUDE
-  PATTERN "*.bad" EXCLUDE
-  PATTERN "*backup*" EXCLUDE
-  PATTERN "*broken*" EXCLUDE
-  PATTERN "*failed*" EXCLUDE
 )
 
 
@@ -55,3 +48,4 @@ install(
 
 
 ament_package()
+
