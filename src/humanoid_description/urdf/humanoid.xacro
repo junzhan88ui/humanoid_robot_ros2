@@ -14,6 +14,9 @@
   <xacro:include
     filename="$(find humanoid_description)/urdf/modules/ros2_control.xacro"/>
 
+ <xacro:include
+    filename="$(find humanoid_description)/urdf/modules/gazebo_control.xacro"/>
+
 
   <xacro:include
     filename="$(find humanoid_description)/urdf/modules/pelvis.xacro"/>
