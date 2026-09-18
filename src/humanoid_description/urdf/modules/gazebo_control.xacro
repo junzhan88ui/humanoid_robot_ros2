@@ -2,7 +2,6 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-
   <gazebo>
 
     <plugin
@@ -10,13 +9,12 @@
       name="gz_ros2_control::GazeboSimROS2ControlPlugin">
 
       <parameters>
-        /home/xujunzhan/humanoid_ws/src/humanoid_description/config/humanoid_controllers.yaml
+        $(find humanoid_description)/config/humanoid_controllers.yaml
       </parameters>
 
     </plugin>
 
   </gazebo>
-
 
 </robot>
 

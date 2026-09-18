@@ -17,7 +17,7 @@
       <!-- 后续 V3.2 接 Gazebo -->
 
       <plugin>
-        mock_components/GenericSystem
+        gz_ros2_control/GazeboSimSystem
       </plugin>
 
     </hardware>
