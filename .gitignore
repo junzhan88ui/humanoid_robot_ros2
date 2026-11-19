@@ -4,3 +4,12 @@ log/
 
 *.pyc
 __pycache__/
+
+# 本地备份 / 历史残留文件
+backup/
+*_backup*
+*before*
+*.old
+*.bad
+*failed*
+*broken*
